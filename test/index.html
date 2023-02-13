@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="quiz"></div>
+<button id="submit">Ověřit</button>
+<div id="results"></div>
+
+<script src="../dist/index.js"></script>
+<script>
+    new Quizzerino("quiz", "submit", "results", [
+        {
+            text: "Kolik je 5+5",
+            answers: [
+                {id: "a", text: "10"},
+                {id: "b", text: "17"},
+                {id: "c", text: "42"}
+            ],
+            correct: "a"
+        },
+        {
+            text: "Kolik je 10+10",
+            answers: [
+                {id: "a", text: "10"},
+                {id: "b", text: "20"},
+                {id: "c", text: "40"}
+            ],
+            correct: "b"
+        }
+    ]).initialize();
+</script>
+</body>
+</html>
