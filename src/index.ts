@@ -117,6 +117,7 @@ class Quizzerino {
 
     const percentageEl = document.createElement("p");
     const percent = 100 * (correct / (correct + wrong + missing));
+    percentageEl.className = "result";
     percentageEl.innerHTML = `Úspěšnost v procentech: ${percent}%`;
     this.resultsElement.appendChild(percentageEl);
   }
