@@ -50,18 +50,20 @@ class Quizzerino {
         questionEl.innerHTML = question.text
         questionWrapper.appendChild(questionEl)
 
-        const answerWrapper = document.createElement('div')
-        answerWrapper.className = "answers"
-        questionWrapper.appendChild(answerWrapper)
+        const answersWrapper = document.createElement('div')
+        answersWrapper.className = "answers"
+        questionWrapper.appendChild(answersWrapper)
 
         question.answers.forEach((answer, answerIndex) => {
             const answerId = `${questionIndex}${answerIndex}`;
+
+            const answerWrapper = document.createElement('div')
+            answerWrapper.className = "answer"
 
             const answerEl = document.createElement('input')
             answerEl.type = "radio"
             answerEl.name = `${questionIndex}`
             answerEl.value = answer.id
-            answerEl.className = "answer"
             answerEl.id = answerId
 
             const label = document.createElement('label')
@@ -69,6 +71,7 @@ class Quizzerino {
             label.innerHTML = answer.text
             answerWrapper.appendChild(answerEl)
             answerWrapper.appendChild(label)
+            answersWrapper.appendChild(answerWrapper)
         })
         this.quiz.appendChild(questionWrapper)
     }
@@ -90,7 +93,20 @@ class Quizzerino {
             }
             correct +=1
         })
-        this.resultsElement.innerHTML = JSON.stringify({correct, wrong, missing})
+        const correctEl = document.createElement('p')
+        correctEl.className = 'result'
+        correctEl.innerHTML = `Správné odpovědi: ${correct}`
+        this.resultsElement.appendChild(correctEl)
+
+        const wrongEl = document.createElement('p')
+        wrongEl.className = 'result'
+        wrongEl.innerHTML = `Špatné odpovědi: ${wrong}`
+        this.resultsElement.appendChild(wrongEl)
+
+        const missingEl = document.createElement('p')
+        missingEl.className = 'result'
+        missingEl.innerHTML = `Chybějící odpovědi: ${missing}`
+        this.resultsElement.appendChild(missingEl)
 
     }
 }
