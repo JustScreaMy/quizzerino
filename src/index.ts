@@ -10,24 +10,24 @@ interface Question {
 }
 
 class Quizzerino {
-	private quiz: HTMLElement
+	private quizElement: HTMLElement
 	private submitButton: HTMLElement
 	private resultsElement: HTMLElement
 	private questions: Question[]
 
 	public constructor(
-		quizFormId: string,
-		submitButtonId: string,
+		quizId: string,
+		submitId: string,
 		resultsId: string,
 		questions: Question[]
 	) {
-		const formElement = document.getElementById(quizFormId)
+		const formElement = document.getElementById(quizId)
 		if (!formElement) {
 			throw new Error('Quiz form not found!')
 		}
-		this.quiz = formElement
+		this.quizElement = formElement
 
-		const buttonElement = document.getElementById(submitButtonId)
+		const buttonElement = document.getElementById(submitId)
 		if (!buttonElement) {
 			throw new Error('Submit button not found!')
 		}
@@ -60,7 +60,7 @@ class Quizzerino {
 		questionWrapper.appendChild(answersWrapper)
 
 		question.answers.forEach((answer, answerIndex) => {
-			const answerId = `${questionIndex}${answerIndex}`
+			const answerUID = `${this.quizElement.id}_${questionIndex}${answerIndex}`
 
 			const answerWrapper = document.createElement('div')
 			answerWrapper.className = 'answer'
@@ -69,16 +69,16 @@ class Quizzerino {
 			answerEl.type = 'radio'
 			answerEl.name = `${questionIndex}`
 			answerEl.value = answer.id
-			answerEl.id = answerId
+			answerEl.id = answerUID
 
 			const label = document.createElement('label')
-			label.htmlFor = answerId
+			label.htmlFor = answerUID
 			label.innerHTML = answer.text
 			answerWrapper.appendChild(answerEl)
 			answerWrapper.appendChild(label)
 			answersWrapper.appendChild(answerWrapper)
 		})
-		this.quiz.appendChild(questionWrapper)
+		this.quizElement.appendChild(questionWrapper)
 	}
 
 	private evaluateQuiz(event: MouseEvent) {
