@@ -1,15 +1,5 @@
-interface Answer {
-	id: string
-	text: string
-}
-
-interface Question {
-	text: string
-	answers: Array<Answer>
-	correct: string
-}
-
-class Quizzerino {
+import type { Question } from './types'
+export default class Quizzerino {
 	private quizElement: HTMLElement
 	private submitButton: HTMLElement
 	private resultsElement: HTMLElement
