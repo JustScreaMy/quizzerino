@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "ES6",
-    "sourceMap": false,
+    "sourceMap": true,
     "lib": [
       "ESNext",
       "DOM"
