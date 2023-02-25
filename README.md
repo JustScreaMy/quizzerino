@@ -11,7 +11,7 @@ It is simple, all you need to do is:
 1. Add script tag with src at the end of your body
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@justscreamy/quizzerino@1.1.0/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@justscreamy/quizzerino@latest"></script>
 ```
 
 2. Create your quiz under that!
