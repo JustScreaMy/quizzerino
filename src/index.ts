@@ -90,6 +90,9 @@ export default class Quizzerino {
 			}
 			correct += 1
 		})
+
+        this.resultsElement.innerHTML = ''
+
 		const correctEl = document.createElement('p')
 		correctEl.className = 'result'
 		correctEl.innerHTML = `Správné odpovědi: ${correct}`
